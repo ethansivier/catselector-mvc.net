@@ -1,31 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    int height = 100;
-    int width = 100;
 
 }
 @model AnswersModel
-
 
 <body>
     <h1> Tick whichever one of these is a cat </h1>
     <form method="post">
        
         @{
-            /*foreach (var item in Model.iscat)
-            {
-               <img src="@item.Value[1]" width=@width height=@height />
-                <input type="checkbox" name="Model[@item.Key]" id="@item.Key" asp-for="enabled" />
-            }*/
+
             <ul>
             @for (int i = 0; i < Model.iscat.Count(); i++)
             {
                 var kvp = Model.iscat.ElementAt(i);
                 
                 <li>
+                    <input type="checkbox" name="selected" value="@kvp.Key" id="box-@i" />
+
                     <label for="box-@i">
-                        <input type="checkbox" name="selected" value="@kvp.Key" id="box-@i" />
-                        <img src="@kvp.Value[1]" width="@width" height="@height" />
+                        <img src="@kvp.Value[1]"/>
                     </label>
                 </li>
             }
@@ -36,10 +30,21 @@
             <button name="button">send answers to be checked</button>
         </div>
     </form>
+
+
+
     @{
         if (!(ViewData["Incorrect"] == null))
         {
-            <p>@ViewData["Incorrect"] of your options are INCORRECT.</p>
+            Console.WriteLine((int)ViewData["Incorrect"]);
+            if (((int)ViewData["Incorrect"] == 0))
+            {
+                <p style="color:rgb(88, 255, 0)" >YOU GOT THEM ALL RIGHT</p>
+            }
+            else
+            {
+                <p>Incorrect. You got @ViewData["Incorrect"] wrong</p>
+            }
         }
     }
         

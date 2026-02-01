@@ -1,5 +1,6 @@
-html {
+﻿html {
   font-size: 14px;
+  
 }
 
 @media (min-width: 768px) {
@@ -9,7 +10,8 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    background-color:#473B78 
 }
 
 html {
@@ -18,19 +20,76 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: repeating-linear-gradient( 45deg, #473B78, #322947 80px, #322947 10px);
 }
+
+header, footer, body {
+    color: rgb(255 255 255);
+}
+
 
 li {
-    display:inline-block
+    display:inline-block;
+    position:relative;
 }
 
-label img {
-    height:100px;
-    width:100px;
+
+label{
+    margin:10px;
     transition-duration: 0.2s;
-    transform-origin: 50% 50%
+    border:1mm ridge rgb(255, 0, 0)
 }
+
+
+label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+    cursor: pointer;
+}
+
+
+button {
+    background-color: rgb(170, 255, 104);
+    border: 3mm ridge rgb(88, 255, 0);
+    margin: 20px;
+    transition-duration: 0.1s;
+}
+
+
+button:hover {
+    transform: scale(1.1);
+    background-color: rgb(170, 255, 104);
+    
+}
+
+
+:checked + label img{
+    transform: scale(.9);
+}
+
+
+:checked + label{
+    border: 2mm ridge rgb(88, 255, 0)
+}
+
+:checked + label:before {
+    position: absolute;
+    left:2%;
+    top:1%;
+    content: "✓";
+    background:rgb(34, 255, 0);
+    z-index:2;
+    width:20px;
+    height:20px;
+    text-align: center;
+    border-radius:100%;
+    transition-duration:0.1s;
+    transform:scale(1.1);
+}
+
 
 input[type="checkbox"]{
     display:none
